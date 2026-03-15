@@ -5,11 +5,24 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.0</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.kbtu.kafka</groupId>
     <artifactId>kafka-social-backend</artifactId>
     <version>1.0</version>
 
     <packaging>pom</packaging>
+
+    <properties>
+        <java.version>17</java.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <springdoc.version>2.8.9</springdoc.version>
+    </properties>
 
     <modules>
         <module>common-events</module>
