@@ -1,11 +1,13 @@
 package com.kbtu.kafka.postservice.entity;
 
+import com.kbtu.kafka.postservice.entity.converter.HashtagListConverter;
 import com.kbtu.kafka.postservice.model.enums.PostStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,7 +25,9 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    private String hashtags;
+    @Convert(converter = HashtagListConverter.class)
+    @Column(columnDefinition = "TEXT")
+    private List<String> hashtags;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

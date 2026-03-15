@@ -19,11 +19,11 @@ public class PostProducer {
 
     public void sendPostCreatedEvent(PostCreatedEvent event) {
         if (!kafkaEnabled) {
-            log.info("Kafka publishing is disabled, skipping PostCreatedEvent for postId={}", event.getId());
+            log.info("Kafka publishing is disabled, skipping PostCreatedEvent for postId={}", event.postId());
             return;
         }
 
-        log.info("Sending PostCreatedEvent to Kafka for postId={}", event.getId());
-        kafkaTemplate.send(postsTopic, event.getId().toString(), event);
+        log.info("Sending PostCreatedEvent to Kafka for postId={}", event.postId());
+        kafkaTemplate.send(postsTopic, event.postId().toString(), event);
     }
 }

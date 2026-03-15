@@ -4,9 +4,11 @@ import com.example.event_management.model.enums.EventCategory;
 import com.example.event_management.model.enums.EventFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +21,7 @@ public class CreateEventRequest {
 
     @Schema(description = "Event title", example = "Spring Boot Workshop")
     @NotBlank
+    @Size(min = 3, max = 100)
     private String title;
 
     @Schema(description = "Organizer email", example = "events@kbtu.kz")
@@ -28,13 +31,16 @@ public class CreateEventRequest {
 
     @Schema(description = "Date and time of the event", example = "2026-04-20T15:00:00")
     @NotNull
+    @Future
     private LocalDateTime eventDate;
 
     @Schema(description = "Location of the event", example = "KBTU Hall 305")
     @NotBlank
+    @Size(min = 2, max = 120)
     private String location;
 
     @Schema(description = "Detailed event description", example = "Hands-on backend workshop")
+    @Size(max = 1000)
     private String description;
 
     @Schema(description = "Category of the event", example = "WORKSHOP")

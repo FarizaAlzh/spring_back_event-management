@@ -40,7 +40,6 @@ public class PostService {
                 savedPost.getUserId(),
                 savedPost.getContent(),
                 savedPost.getHashtags(),
-                savedPost.getStatus().name(),
                 savedPost.getCreatedAt()
         );
 

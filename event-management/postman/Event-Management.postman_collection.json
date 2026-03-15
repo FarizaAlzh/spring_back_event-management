@@ -1,0 +1,165 @@
+{
+  "info": {
+    "_postman_id": "b95c2f0a-2774-4b18-94d9-0c24d68d0f90",
+    "name": "Event Management API",
+    "description": "Collection for testing the versioned Event Management API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Spring Boot Workshop\",\n  \"organizerEmail\": \"events@kbtu.kz\",\n  \"eventDate\": \"2026-04-20T15:00:00\",\n  \"location\": \"KBTU Hall 305\",\n  \"description\": \"Hands-on backend workshop\",\n  \"category\": \"WORKSHOP\",\n  \"format\": \"OFFLINE\",\n  \"maxParticipants\": 40\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "events"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Events",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/events?page=0&size=5&sort=eventDate,asc",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "events"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "5"
+            },
+            {
+              "key": "sort",
+              "value": "eventDate,asc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Event By Id",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/events/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "events",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Event",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Advanced Spring Boot Workshop\",\n  \"organizerEmail\": \"backend-club@kbtu.kz\",\n  \"eventDate\": \"2026-05-10T17:30:00\",\n  \"location\": \"KBTU Hall 401\",\n  \"description\": \"Updated agenda for the backend workshop\",\n  \"category\": \"LECTURE\",\n  \"format\": \"ONLINE\",\n  \"maxParticipants\": 80\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/events/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "events",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Event",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/events/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "events",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Validation Error Example",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"organizerEmail\": \"wrong-email\",\n  \"eventDate\": \"2025-01-01T10:00:00\",\n  \"location\": \"\",\n  \"category\": null,\n  \"format\": null,\n  \"maxParticipants\": 0\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "events"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081"
+    }
+  ]
+}

@@ -1,20 +1,14 @@
 package com.kbtu.kafka.events;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class PostCreatedEvent {
-    private UUID id;
-    private String userId;
-    private String content;
-    private String hashtags;
-    private String status;
-    private LocalDateTime createdAt;
+public record PostCreatedEvent(
+        UUID postId,
+        String userId,
+        String content,
+        List<String> hashtags,
+        LocalDateTime timestamp
+) {
 }

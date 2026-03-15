@@ -23,6 +23,12 @@ public class EventService {
 
     public EventResponse createEvent(CreateEventRequest request) {
         log.info("Creating event with title: {}", request.getTitle());
+        log.debug("Create request payload: organizerEmail={}, eventDate={}, category={}, format={}, maxParticipants={}",
+                request.getOrganizerEmail(),
+                request.getEventDate(),
+                request.getCategory(),
+                request.getFormat(),
+                request.getMaxParticipants());
 
         Event event = eventMapper.toEntity(request);
         Event savedEvent = eventRepository.save(event);
@@ -34,12 +40,17 @@ public class EventService {
 
     public Page<EventResponse> getAllEvents(Pageable pageable) {
         log.info("Fetching events with pagination");
+        log.debug("Page request details: page={}, size={}, sort={}",
+                pageable.getPageNumber(),
+                pageable.getPageSize(),
+                pageable.getSort());
 
         return eventRepository.findAll(pageable)
                 .map(eventMapper::toResponse);
     }
     public EventResponse getEventById(Long id) {
         log.info("Fetching event with id: {}", id);
+        log.debug("Looking up event in repository by id={}", id);
 
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found with id: " + id));
@@ -48,6 +59,11 @@ public class EventService {
     }
     public EventResponse updateEvent(Long id, UpdateEventRequest request) {
         log.info("Updating event with id: {}", id);
+        log.debug("Update request payload for id={}: title={}, eventDate={}, location={}",
+                id,
+                request.getTitle(),
+                request.getEventDate(),
+                request.getLocation());
 
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found with id: " + id));
@@ -61,6 +77,7 @@ public class EventService {
     }
     public void deleteEvent(Long id) {
         log.info("Deleting event with id: {}", id);
+        log.debug("Checking existence before delete for event id={}", id);
 
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Event not found with id: " + id));
