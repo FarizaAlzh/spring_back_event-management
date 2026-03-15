@@ -38,7 +38,6 @@ public class EventService {
         return eventRepository.findAll(pageable)
                 .map(eventMapper::toResponse);
     }
-
     public EventResponse getEventById(Long id) {
         log.info("Fetching event with id: {}", id);
 
@@ -47,7 +46,6 @@ public class EventService {
 
         return eventMapper.toResponse(event);
     }
-
     public EventResponse updateEvent(Long id, UpdateEventRequest request) {
         log.info("Updating event with id: {}", id);
 
@@ -61,7 +59,6 @@ public class EventService {
 
         return eventMapper.toResponse(updatedEvent);
     }
-
     public void deleteEvent(Long id) {
         log.info("Deleting event with id: {}", id);
 

@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @Tag(name = "Event API", description = "Operations for managing KBTU events")
 public class EventController {
-
     private final EventService eventService;
 
     @Operation(summary = "Create event", description = "Creates a new event")
@@ -35,7 +34,6 @@ public class EventController {
         EventResponse response = eventService.createEvent(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-
     @Operation(summary = "Get all events", description = "Returns paginated list of events")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Events returned successfully"),
@@ -45,7 +43,6 @@ public class EventController {
     public ResponseEntity<Page<EventResponse>> getAllEvents(Pageable pageable) {
         return ResponseEntity.ok(eventService.getAllEvents(pageable));
     }
-
     @Operation(summary = "Get event by id", description = "Returns one event by its id")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Event found"),
@@ -56,7 +53,6 @@ public class EventController {
     public ResponseEntity<EventResponse> getEventById(@PathVariable Long id) {
         return ResponseEntity.ok(eventService.getEventById(id));
     }
-
     @Operation(summary = "Update event", description = "Updates an existing event")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Event updated successfully"),
@@ -71,7 +67,6 @@ public class EventController {
     ) {
         return ResponseEntity.ok(eventService.updateEvent(id, request));
     }
-
     @Operation(summary = "Delete event", description = "Deletes an event by id")
     @ApiResponses({
             @ApiResponse(responseCode = "204", description = "Event deleted successfully"),

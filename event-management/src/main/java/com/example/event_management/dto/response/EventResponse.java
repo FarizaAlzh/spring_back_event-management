@@ -15,7 +15,6 @@ public class EventResponse {
 
     @Schema(description = "Event id", example = "1")
     private Long id;
-
     @Schema(description = "Event title", example = "Spring Boot Workshop")
     private String title;
 

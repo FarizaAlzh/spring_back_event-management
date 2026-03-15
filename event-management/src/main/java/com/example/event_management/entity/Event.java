@@ -19,30 +19,24 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private String title;
-
     @Column(name = "organizer_email", nullable = false)
     private String organizerEmail;
-
     @Column(name = "event_date", nullable = false)
     private LocalDateTime eventDate;
-
     @Column(nullable = false)
     private String location;
-
     @Column(columnDefinition = "TEXT")
     private String description;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EventCategory category;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private EventFormat format;
 
+    private EventFormat format;
     @Column(name = "max_participants", nullable = false)
     private Integer maxParticipants;
 }

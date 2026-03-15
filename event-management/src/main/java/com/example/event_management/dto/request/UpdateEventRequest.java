@@ -17,25 +17,18 @@ public class UpdateEventRequest {
 
     @NotBlank
     private String title;
-
     @NotBlank
     @Email
     private String organizerEmail;
-
     @NotNull
     private LocalDateTime eventDate;
-
     @NotBlank
     private String location;
-
     private String description;
-
     @NotNull
     private EventCategory category;
-
     @NotNull
     private EventFormat format;
-
     @NotNull
     @Min(1)
     private Integer maxParticipants;
